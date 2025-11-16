@@ -42,6 +42,9 @@ include-package-data = true
 where = ["Lib"]
 namespaces = false
 
+[project.scripts]
+astrolabe = "astrolabe:main"
+
 [tool.setuptools_scm]
 
 [tool.wheel]
