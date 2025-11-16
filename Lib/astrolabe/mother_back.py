@@ -22,6 +22,7 @@ Render the back of the mother of the astrolabe.
 """
 
 from math import pi, sin, tan, cos, acos, atan, atan2, floor
+from importlib import resources
 from typing import Dict
 
 from .constants import unit_deg, unit_rev, unit_cm, unit_mm, centre_scaling, r_1, d_12
@@ -243,7 +244,7 @@ class MotherBack(BaseComponent):
         y_1394 = []  # List of solar longitude values for each data point
         x_1974 = []
         y_1974 = []
-        with open("raw_data/tuckerman.dat", "rt") as f_in:
+        with resources.open_text(__package__, "data/tuckerman.dat") as f_in:
             for line in f_in:
                 line = line.strip()
 
@@ -274,7 +275,7 @@ class MotherBack(BaseComponent):
 
         prev_theta = 30 * unit_deg * (10 - 1) + 9.4 * unit_deg
 
-        with open("raw_data/tuckerman.dat") as f_in:
+        with resources.open_text(__package__, "data/tuckerman.dat") as f_in:
             for line in f_in:
                 line = line.strip()
 
@@ -371,7 +372,7 @@ class MotherBack(BaseComponent):
 
         # Add dates of saints days between circles 10 and 12
         context.set_font_size(1.0)
-        with open("raw_data/saints_days.dat") as f_in:
+        with resources.open_text(__package__, "data/saints_days.dat") as f_in:
             for line in f_in:
                 line = line.strip()
 

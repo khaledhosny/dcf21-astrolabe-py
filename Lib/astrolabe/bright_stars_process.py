@@ -21,6 +21,7 @@ This script takes the Yale Bright Star Catalogue, and formats it into a Python l
 """
 
 import re
+from importlib import resources
 
 from typing import Dict, Final, List, Union
 
@@ -54,7 +55,7 @@ def fetch_bright_star_list() -> Dict[str, Union[list, dict]]:
 
     # Look up the common names of bright stars
     star_names: Dict[int, str] = {}
-    with open("raw_data/bright_star_names.dat", "rt") as f_in:
+    with resources.open_text(__package__, "data/bright_star_names.dat") as f_in:
         for line in f_in:
             # Ignore blank lines and comment lines
             if (len(line) < 5) or (line[0] == '#'):
@@ -68,7 +69,7 @@ def fetch_bright_star_list() -> Dict[str, Union[list, dict]]:
 
     # Loop through the Yale Bright Star Catalog, line by line
     bs_num: int = 0
-    with open("raw_data/bright_star_catalog.dat", "rt") as f_in:
+    with resources.open_text(__package__, "data/bright_star_catalog.dat") as f_in:
         for line in f_in:
             # Ignore blank lines and comment lines
             if (len(line) < 100) or (line[0] == '#'):

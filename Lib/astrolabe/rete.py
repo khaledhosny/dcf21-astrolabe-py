@@ -22,6 +22,7 @@ Render the rete of the astrolabe.
 """
 
 from math import pi, sin, tan, cos, asin, floor
+from importlib import resources
 from typing import Dict
 
 from .bright_stars_process import fetch_bright_star_list
@@ -194,7 +195,7 @@ class Rete(BaseComponent):
         context.stroke()
 
         # Draw constellation stick figures
-        with open("raw_data/constellation_stick_figures.dat") as f_in:
+        with resources.open_text(__package__, "data/constellation_stick_figures.dat") as f_in:
             for line in f_in:
                 line: str = line.strip()
 
