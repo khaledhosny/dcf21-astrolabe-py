@@ -22,9 +22,6 @@ to build an astrolabe for that latitude, and instructions as to how to put them 
 """
 
 import argparse
-import os
-import subprocess
-import time
 from pathlib import Path
 from typing import Dict, Union
 
@@ -35,7 +32,6 @@ from .mother_back import MotherBack
 from .mother_front import MotherFront
 from .rete import Rete
 from .rule import Rule
-from .settings import fetch_command_line_arguments
 
 
 def make(args):
